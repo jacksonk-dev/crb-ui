@@ -8,7 +8,7 @@
   ],
   "ignorePatterns": ["dist", ".eslintrc"],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["react-refresh"],
+  "plugins": ["react-refresh", "eslint-plugin-import"],
   "rules": {
     "react-refresh/only-export-components": [
       "warn",
@@ -16,6 +16,41 @@
     ],
     "semi": ["error", "always"],
     "quotes": ["error", "single", { "avoidEscape": true }],
-    "indent": ["error", 2]
+    "indent": ["error", 2],
+
+    // this is for sorting within an import e.g. useEffect comes before useState alphabetically
+    "sort-imports": ["error", {"ignoreCase": true, "ignoreDeclarationSort": true}],
+
+    // this is for grouping and sorting import groups
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "external", 
+          "builtin",
+          "internal",
+          "sibling", 
+          "parent",
+          "index"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react | react-dom | vite",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "src/**",
+            "group": "internal"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["internal", "react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
   }
 }
