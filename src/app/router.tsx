@@ -1,14 +1,16 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 
-import LoginPage from './auth/login';
-import Caps from './caps';
-import Data from './data';
-import Reports from './reports';
-import AppRoot from './root';
+import LoginPage from 'src/app/auth/login';
+import Caps from 'src/app/caps';
+import Data from 'src/app/data';
+import Home from 'src/app/home';
+import Reports from 'src/app/reports';
+import AppRoot from 'src/app/root';
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<AppRoot />}>
+      <Route path="" element={<Home />} />
       <Route path="login" element={<LoginPage />} />
       <Route path="reports" element={<Reports />} />
       <Route path="caps" element={<Caps />} />
