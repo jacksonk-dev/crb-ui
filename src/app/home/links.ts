@@ -1,4 +1,3 @@
-import { IconType } from 'react-icons';
 import { 
   AiOutlineMoneyCollect as CapIcon, 
   AiOutlineDatabase as DataIcon,
@@ -6,11 +5,7 @@ import {
 } from 'react-icons/ai';
 import { CiMoneyBill as BillingIcon } from 'react-icons/ci';
 
-type Link = {
-  label: string,
-  to: string,
-  Icon: IconType
-}
+import { Link } from 'src/app/shared/modals/appConstants';
 
 const links: Array<Link> = [
   {
