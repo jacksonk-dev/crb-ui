@@ -7,6 +7,8 @@ import Home from 'src/app/home';
 import Reports from 'src/app/reports';
 import AppRoot from 'src/app/root';
 
+import Billing from './billing';
+
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<AppRoot />}>
@@ -15,6 +17,7 @@ const appRouter = createBrowserRouter(
       <Route path="reports" element={<Reports />} />
       <Route path="caps" element={<Caps />} />
       <Route path="data" element={<Data />} />
+      <Route path="billing" element={<Billing />} />
     </Route>
   )
 );
