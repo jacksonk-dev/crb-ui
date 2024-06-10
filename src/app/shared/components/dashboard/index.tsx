@@ -8,7 +8,7 @@ const Dashboard = ({ title, links }: { links: Array<AppLink>, title?: string }) 
       <div className='md:max-w-[70%] m-auto'>
         {
           title &&
-          <h3 className='mb-4 text-xl'>{title}</h3>
+          <h3 className='mb-4 text-xl font-bold'>{title}</h3>
         }
         <div className={`m-auto grid grid-cols-2 ${links?.length < 5 ? 'md:grid-cols-2' : 'md:grid-cols-3'} gap-2`}>
           {
