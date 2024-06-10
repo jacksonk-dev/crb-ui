@@ -1,7 +1,7 @@
+import { HiOutlineUserGroup as InstitutionIcon } from 'react-icons/hi2';
 import { IoAdd as NewReportIcon } from 'react-icons/io5';
 import { IoPersonOutline as MyReportsIcon } from 'react-icons/io5';
 import { MdOutlineGroupAdd as BranchIcon } from 'react-icons/md';
-import { VscOrganization as InstitutionIcon } from 'react-icons/vsc';
 
 import { Link } from '../shared/modals/appConstants';
 

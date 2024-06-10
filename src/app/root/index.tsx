@@ -7,7 +7,7 @@ export default function Root(){
   return (
     <div className="w-svw h-svh flex flex-col items-center justify-between">
       <NavBar />
-      <div className='p-1 w-full flex justify-center'>
+      <div className='p-4 h-full w-full'>
         <Outlet />
       </div>
       <Footer />

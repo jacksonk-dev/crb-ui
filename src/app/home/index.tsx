@@ -1,9 +1,12 @@
 import links from 'src/app/home/links';
-
-import Dashboard from '../shared/components/dashboard';
+import Dashboard from 'src/app/shared/components/dashboard';
 
 const Home = () => {
-  return <Dashboard title='Services' links={links} />;
+  return (
+    <div className='flex justify-between w-full h-full items-center'>
+      <Dashboard title="Service" links={links} />
+    </div>
+  );
 };
 
 export default Home;
