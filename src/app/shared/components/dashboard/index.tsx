@@ -22,7 +22,7 @@ const Dashboard = ({ title, links }: { links: Array<AppLink>, title?: string }) 
                   className='
                   bg-white text-blue-700
                   flex flex-col justify-center items-center text-center
-                  border h-48 p-4 rounded shadow-sm 
+                  border h-48 p-4 rounded shadow
                   font-light hover:font-extrabold 
                   transition-all
                   parent group

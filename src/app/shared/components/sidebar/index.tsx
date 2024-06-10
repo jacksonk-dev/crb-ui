@@ -5,7 +5,7 @@ import { Link as AppLink } from 'src/app/shared/modals/appConstants';
 const SideBar = ({ links }: { links: Array<AppLink>, title?: string }) => {
   return (
     <div className='w-fit h-full md:min-w-48 animate-zoom'>
-      <div className='flex flex-col bg-white h-full py-2 rounded'>
+      <div className='flex flex-col bg-white h-full py-2 rounded shadow'>
         {
           links.map(({label, to, Icon}, i) => {
             const reactKey = `home-link-${i}`;
