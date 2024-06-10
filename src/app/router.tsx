@@ -15,9 +15,7 @@ const appRouter = createBrowserRouter(
       <Route path="" element={<Home />} />
       <Route path="login" element={<LoginPage />} />
       <Route path="reports" element={<Reports />} />
-      <Route path="caps" element={<Caps />}>
-        <Route path=":category" element={<Caps />} />
-      </Route>
+      <Route path="caps" element={<Caps />} />
       <Route path="data" element={<Data />} />
       <Route path="billing" element={<Billing />} />
     </Route>
