@@ -4,7 +4,7 @@ import { Link as AppLink } from 'src/app/shared/modals/appConstants';
 
 const Dashboard = ({ title, links }: { links: Array<AppLink>, title?: string }) => {
   return (
-    <div className='w-full md:w-[50%]'>
+    <div className='w-full md:w-[50%] animate-zoom'>
       {
         title &&
         <h3 className='mb-4 text-xl'>{title}</h3>
