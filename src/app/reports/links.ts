@@ -3,7 +3,7 @@ import { IoAdd as NewReportIcon } from 'react-icons/io5';
 import { IoPersonOutline as MyReportsIcon } from 'react-icons/io5';
 import { MdOutlineGroupAdd as BranchIcon } from 'react-icons/md';
 
-import { Link } from '../shared/modals/appConstants';
+import { Link } from 'src/app/shared/modals/appConstants';
 
 const links: Array<Link> = [
   {

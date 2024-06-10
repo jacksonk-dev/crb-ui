@@ -18,7 +18,17 @@
     "semi": ["error", "always"],
     "quotes": ["error", "single", { "avoidEscape": true }],
     "indent": ["error", 2],
-
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["./", "../"],
+            "message": "Relative imports are not allowed."
+          }
+        ]
+      }
+    ],
     // this is for sorting within an import e.g. useEffect comes before useState alphabetically
     "sort-imports": ["error", {"ignoreCase": true, "ignoreDeclarationSort": true}],
 

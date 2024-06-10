@@ -1,7 +1,7 @@
 import { AiOutlineCloudUpload as UploadIcon } from 'react-icons/ai';
 import { BsFilesAlt as AllFilesIcon, BsFiles as FilesIcon } from 'react-icons/bs';
 
-import { Link } from '../shared/modals/appConstants';
+import { Link } from 'src/app/shared/modals/appConstants';
 
 const links: Array<Link> = [
   {
