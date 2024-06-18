@@ -12,7 +12,7 @@ const Dashboard = ({ title, links }: { links: Array<AppLink>, title?: string }) 
         }
         <div className={`m-auto grid grid-cols-2 ${links?.length < 5 ? 'md:grid-cols-2' : 'md:grid-cols-3'} gap-2`}>
           {
-            links.map(({label, to, Icon, color}, i) => {
+            links.map(({ label, to, Icon, color }, i) => {
               const reactKey = `home-link-${i}`;
 
               return (

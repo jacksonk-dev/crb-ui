@@ -7,7 +7,7 @@ const SideBar = ({ links }: { links: Array<AppLink>, title?: string }) => {
     <div className='w-fit h-full md:min-w-48 animate-zoom'>
       <div className='flex flex-col bg-white h-full py-2 rounded shadow'>
         {
-          links.map(({label, to, Icon}, i) => {
+          links.map(({ label, to, Icon }, i) => {
             const reactKey = `home-link-${i}`;
 
             return (
