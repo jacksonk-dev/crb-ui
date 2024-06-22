@@ -1,13 +1,13 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 
 import LoginPage from 'src/app/auth/login';
+import Billing from 'src/app/billing';
 import Caps from 'src/app/caps';
 import Data from 'src/app/data';
 import Home from 'src/app/home';
 import Reports from 'src/app/reports';
 import AppRoot from 'src/app/root';
 
-import Billing from './billing';
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
