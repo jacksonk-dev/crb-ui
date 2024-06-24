@@ -1,4 +1,4 @@
-import links from 'src/app/data/links';
+import links from 'src/app/modules/data/links';
 import Dashboard from 'src/app/shared/components/dashboard';
 import SideBar from 'src/app/shared/components/sidebar';
 

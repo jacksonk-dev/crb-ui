@@ -1,14 +1,14 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 
-import ForgotPassword from 'src/app/auth/forgot-password/form';
-import LoginPage from 'src/app/auth/login/form';
-import ResetPassword from 'src/app/auth/reset-password/form';
-import Billing from 'src/app/billing';
-import Caps from 'src/app/caps';
-import Data from 'src/app/data';
+import AppRoot from 'src/app';
+import ForgotPassword from 'src/app/core/auth/forgot-password/form';
+import LoginPage from 'src/app/core/auth/login/form';
+import ResetPassword from 'src/app/core/auth/reset-password/form';
 import Home from 'src/app/home';
-import Reports from 'src/app/reports';
-import AppRoot from 'src/app/root';
+import Billing from 'src/app/modules/billing';
+import Caps from 'src/app/modules/caps';
+import Data from 'src/app/modules/data';
+import Reports from 'src/app/modules/reports';
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(

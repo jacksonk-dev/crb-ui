@@ -1,22 +1,27 @@
 import { useMutation } from '@tanstack/react-query';
 import { Button, Image, message, Spin } from 'antd';
 import { FormEvent, useState } from 'react';
-import { CiUser as UserIcon } from 'react-icons/ci';
+import { CiLock as PasswordIcon } from 'react-icons/ci';
+import { IoEyeOffOutline as HidePasswordIcon, IoEyeOutline as ShowPasswordIcon } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 
+import { requestPasswordReset } from 'src/app/core/services/user';
 import Input from 'src/app/shared/components/Input';
-import { requestPasswordReset } from 'src/app/shared/services/user';
+import { TextInputType } from 'src/app/shared/types/inputs';
 
-const ForgotPassword: React.FC = () => {
+const ResetPassword: React.FC = () => {
 
   const navigate  = useNavigate();
-  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
+  const [passwordFieldType, setPasswordFieldType] = useState<TextInputType>('password');
+
   const [messageApi, contextHolder] = message.useMessage();
   const [processing, setProcessing] = useState(false);
 
   const mutation = useMutation({
     mutationFn: () => {
-      return requestPasswordReset(email);
+      return requestPasswordReset('');
     },
     onSuccess: (data) => {            
       setProcessing(false);
@@ -26,13 +31,11 @@ const ForgotPassword: React.FC = () => {
       } else {        
         messageApi.open({
           type: 'success',
-          content: 'Password Reset Request Sent.',
+          content: 'Password Reset Successfully.',
           duration: 3,
-        })
-          .then(() => message.info("You'll receive an email shortly. Please follow the instructions to reset your password.", 5))
-          .then(() => {
-            navigate('/login');
-          });
+        });
+
+        navigate('/login');
       }
       
     },
@@ -45,7 +48,7 @@ const ForgotPassword: React.FC = () => {
     event.preventDefault();
     setProcessing(true);
 
-    if(email){
+    if(password && passwordConfirmation === password){
       mutation.mutate();
     }
 
@@ -60,23 +63,38 @@ const ForgotPassword: React.FC = () => {
             <Image src='assets/images/metropol_logo.jpeg' />
           </div>
           <form className='grid grid-cols-1 gap-4 w-full place-items-center' onSubmit={onSubmit}>
-            <Input
-              disabled={processing} 
+            <Input 
               required={true}
-              type='email'
+              disabled={processing}
+              type={passwordFieldType} 
               size="large" 
-              placeholder="Username/Email" 
-              prefix={<UserIcon className='text-xl mr-2' />} 
+              placeholder="New Password" 
+              prefix={<PasswordIcon className='text-xl mr-2' />}
+              suffix={
+                passwordFieldType === 'password' 
+                  ? <ShowPasswordIcon onClick={() => setPasswordFieldType('text')} className='text-xl opacity-70 cursor-pointer' /> 
+                  : <HidePasswordIcon onClick={() => setPasswordFieldType('password')}  className='text-xl opacity-70 cursor-pointer' />
+              }
               className='w-full p-4'
-              onChange={setEmail}
+              onChange={setPassword}
+            />
+            <Input 
+              required={true}
+              disabled={processing}
+              type={passwordFieldType} 
+              size="large" 
+              placeholder="Confirm Password" 
+              prefix={<PasswordIcon className='text-xl mr-2' />}
+              className='w-full p-4'
+              onChange={setPasswordConfirmation}
             />
             <Button           
               className='w-[50%] p-6'
               type="primary"
               htmlType='submit'
-              disabled={!email || processing}
+              disabled={!(password && passwordConfirmation) || password !== passwordConfirmation || processing}
             >
-              Request Password Reset
+              Reset Password
             </Button>
           </form>
           <div className={`h-full w-full flex items-center justify-center bg-color-[#F5F5F5] ${processing ? 'opacity-100' : 'opacity-0'}`}>
@@ -88,4 +106,4 @@ const ForgotPassword: React.FC = () => {
   );
 };
 
-export default ForgotPassword;
+export default ResetPassword;

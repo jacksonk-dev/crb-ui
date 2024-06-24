@@ -5,8 +5,10 @@ import { CiLock as PasswordIcon, CiUser as UserIcon } from 'react-icons/ci';
 import { IoEyeOffOutline as HidePasswordIcon, IoEyeOutline as ShowPasswordIcon } from 'react-icons/io5';
 import { Link, useNavigate } from 'react-router-dom';
 
+import { useActiveCRB } from 'src/app/core/services/app';
+import { logUserIn } from 'src/app/core/services/user';
 import Input from 'src/app/shared/components/Input';
-import { logUserIn } from 'src/app/shared/services/user';
+import { Logo } from 'src/app/shared/configs/app';
 import { UserForm } from 'src/app/shared/types/form';
 import { TextInputType } from 'src/app/shared/types/inputs';
 
@@ -17,10 +19,11 @@ const LoginPage: React.FC = () => {
   const [passwordFieldType, setPasswordFieldType] = useState<TextInputType>('password');
   const [messageApi, contextHolder] = message.useMessage();
   const [processing, setProcessing] = useState(false);
+  const activeCRB = useActiveCRB();
 
   const mutation = useMutation({
     mutationFn: () => {
-      return logUserIn(user);
+      return logUserIn(user, activeCRB);
     },
     onSuccess: (data) => {  
       setProcessing(false) ; 
@@ -50,8 +53,8 @@ const LoginPage: React.FC = () => {
       {contextHolder}
       <div className='h-full w-full flex items-center justify-center'>
         <div className='grid grid-cols-1 gap-4 place-items-center	 justify-center w-full sm:w-[60%] md:w-[512px]'>
-          <div className='h-28 w-28 flex justify-center items-center bg-white m-auto'>
-            <Image src='assets/images/metropol_logo.jpeg' />
+          <div className='h-28 w-28 flex justify-center items-center m-auto border'>
+            <Image src={Logo[activeCRB]} />
           </div>
           <form className='grid grid-cols-1 gap-4 w-full place-items-center' onSubmit={onSubmit}>
             <div className='grid grid-cols-1 gap-2 w-full'>
