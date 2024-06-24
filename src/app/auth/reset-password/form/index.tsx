@@ -68,7 +68,7 @@ const ResetPassword: React.FC = () => {
               disabled={processing}
               type={passwordFieldType} 
               size="large" 
-              placeholder="Password" 
+              placeholder="New Password" 
               prefix={<PasswordIcon className='text-xl mr-2' />}
               suffix={
                 passwordFieldType === 'password' 
