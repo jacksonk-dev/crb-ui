@@ -1,4 +1,14 @@
-export async function postData(url: string, data: unknown) {
+export async function postData(url: string, data?: null | unknown, requestParams?: undefined | {[key: string]: string}) {
+
+  if(!data && requestParams) {
+
+    url += '?';
+
+    for(const key in requestParams) {
+      url += `${key}=${requestParams[key]}`;
+    }
+  }
+
   const response = await fetch(url, {
     method: 'POST',
     cache: 'no-cache',

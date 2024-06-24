@@ -13,7 +13,7 @@ export default function Root(){
   const navigate = useNavigate();
   
   useEffect(() => {
-    if(!user && location.pathname !== '/login') {      
+    if(!user && !{ '/login': true, '/request-password-reset': true }[location.pathname]) {      
       navigate('/login');
     }
   }, [location.pathname, navigate, user]);

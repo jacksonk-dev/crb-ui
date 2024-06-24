@@ -7,7 +7,7 @@ import { postData } from 'src/app/shared/utils/http';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-export function loginUserIn(credentials: UserForm) {  
+export function logUserIn(credentials: UserForm) {  
   return postData(`${API_URL}/login`, credentials).then(data => {
     if(data?.access_token) {      
       localStorage.setItem('access-token', data?.access_token);
@@ -15,6 +15,10 @@ export function loginUserIn(credentials: UserForm) {
 
     return data;
   });
+}
+
+export function requestPasswordReset(email: string) {
+  return postData(`${API_URL}/users/forgot_password`, null, { email });
 }
 
 export function useAuthentication(): { user?: User | null, token?: string} {
