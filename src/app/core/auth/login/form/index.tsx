@@ -15,11 +15,11 @@ import { TextInputType } from 'src/app/shared/types/inputs';
 const LoginPage: React.FC = () => {
 
   const navigate  = useNavigate();
+  const activeCRB = useActiveCRB();
   const [user, setUser] = useState<UserForm>({});
   const [passwordFieldType, setPasswordFieldType] = useState<TextInputType>('password');
   const [messageApi, contextHolder] = message.useMessage();
   const [processing, setProcessing] = useState(false);
-  const activeCRB = useActiveCRB();
 
   const mutation = useMutation({
     mutationFn: () => {
@@ -53,10 +53,10 @@ const LoginPage: React.FC = () => {
       {contextHolder}
       <div className='h-full w-full flex items-center justify-center'>
         <div className='grid grid-cols-1 gap-4 place-items-center	 justify-center w-full sm:w-[60%] md:w-[512px]'>
-          <div className='h-28 w-28 flex justify-center items-center m-auto border'>
-            <Image src={Logo[activeCRB]} />
-          </div>
-          <form className='grid grid-cols-1 gap-4 w-full place-items-center' onSubmit={onSubmit}>
+          <form className='grid grid-cols-1 gap-6 w-full place-items-center' onSubmit={onSubmit}>
+            <div className='h-28 w-28 flex justify-center items-center m-auto border'>
+              <Image src={Logo[activeCRB]} />
+            </div>
             <div className='grid grid-cols-1 gap-2 w-full'>
               <Input 
                 required={true}

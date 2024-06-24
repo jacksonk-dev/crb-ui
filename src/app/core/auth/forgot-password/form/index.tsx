@@ -2,13 +2,15 @@ import { useMutation } from '@tanstack/react-query';
 import { Button, Image, message, Spin } from 'antd';
 import { FormEvent, useState } from 'react';
 import { CiUser as UserIcon } from 'react-icons/ci';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
+import { useActiveCRB } from 'src/app/core/services/app';
 import { requestPasswordReset } from 'src/app/core/services/user';
 import Input from 'src/app/shared/components/Input';
+import { Logo } from 'src/app/shared/configs/app';
 
 const ForgotPassword: React.FC = () => {
-
+  const activeCRB = useActiveCRB();
   const navigate  = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [messageApi, contextHolder] = message.useMessage();
@@ -56,10 +58,10 @@ const ForgotPassword: React.FC = () => {
       {contextHolder}
       <div className='h-full w-full flex items-center justify-center'>
         <div className='grid grid-cols-1 gap-4 place-items-center	 justify-center w-full sm:w-[60%] md:w-[512px] z-10'>
-          <div className='h-28 w-28 flex justify-center items-center bg-white m-auto'>
-            <Image src='assets/images/metropol_logo.jpeg' />
-          </div>
-          <form className='grid grid-cols-1 gap-4 w-full place-items-center' onSubmit={onSubmit}>
+          <form className='grid grid-cols-1 gap-6 w-full place-items-center' onSubmit={onSubmit}>
+            <div className='h-28 w-28 flex justify-center items-center bg-white m-auto'>
+              <Image src={Logo[activeCRB]} />
+            </div>
             <Input
               disabled={processing} 
               required={true}
@@ -70,14 +72,19 @@ const ForgotPassword: React.FC = () => {
               className='w-full p-4'
               onChange={setEmail}
             />
-            <Button           
-              className='w-[50%] p-6'
-              type="primary"
-              htmlType='submit'
-              disabled={!email || processing}
-            >
-              Request Password Reset
-            </Button>
+            <div className='w-full flex items-center justify-between'>
+              <Button           
+                className='w-[50%] p-6'
+                type="primary"
+                htmlType='submit'
+                disabled={!email || processing}
+              >
+                Request Password Reset
+              </Button>
+              <Link to="/login">
+                Back to Login
+              </Link>
+            </div>
           </form>
           <div className={`h-full w-full flex items-center justify-center bg-color-[#F5F5F5] ${processing ? 'opacity-100' : 'opacity-0'}`}>
             <Spin className='' />
