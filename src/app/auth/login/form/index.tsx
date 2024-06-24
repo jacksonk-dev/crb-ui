@@ -74,8 +74,8 @@ const LoginPage: React.FC = () => {
                 prefix={<PasswordIcon className='text-xl mr-2' />}
                 suffix={
                   passwordFieldType === 'password' 
-                    ? <ShowPasswordIcon onClick={() => setPasswordFieldType('text')} className='text-xl opacity-70' /> 
-                    : <HidePasswordIcon onClick={() => setPasswordFieldType('password')}  className='text-xl opacity-70' />
+                    ? <ShowPasswordIcon onClick={() => setPasswordFieldType('text')} className='text-xl opacity-70 cursor-pointer' /> 
+                    : <HidePasswordIcon onClick={() => setPasswordFieldType('password')}  className='text-xl opacity-70 cursor-pointer' />
                 }
                 className='w-full p-4'
                 onChange={(password) => setUser((currentUser) => ({ ...currentUser, password }))}

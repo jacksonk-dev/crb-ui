@@ -6,6 +6,11 @@ import Footer from 'src/app/root/footer';
 import NavBar from 'src/app/root/nav-bar';
 import { useAuthentication } from 'src/app/shared/services/user';
 
+const nonAuthRoutes: {[key: string]: boolean} = { 
+  '/login': true, 
+  '/reset-password': true ,
+  '/request-password-reset': true 
+};
 
 export default function Root(){
   const { user } = useAuthentication();  
@@ -13,7 +18,7 @@ export default function Root(){
   const navigate = useNavigate();
   
   useEffect(() => {
-    if(!user && !{ '/login': true, '/request-password-reset': true }[location.pathname]) {      
+    if(!user && !nonAuthRoutes[location.pathname]) {      
       navigate('/login');
     }
   }, [location.pathname, navigate, user]);
