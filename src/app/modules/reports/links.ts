@@ -3,9 +3,9 @@ import { IoAdd as NewReportIcon } from 'react-icons/io5';
 import { IoPersonOutline as MyReportsIcon } from 'react-icons/io5';
 import { MdOutlineGroupAdd as BranchIcon } from 'react-icons/md';
 
-import { Link } from 'src/app/shared/modals/appConstants';
+import { AppLink } from 'src/app/shared/types/app';
 
-const links: Array<Link> = [
+const links: Array<AppLink> = [
   {
     label: 'New Report',
     to: 'new',

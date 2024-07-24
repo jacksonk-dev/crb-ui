@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-import { Link as AppLink } from 'src/app/shared/modals/appConstants';
+import { AppLink } from 'src/app/shared/types/app';
 
 const SideBar = ({ links }: { links: Array<AppLink>, title?: string }) => {
   return (
@@ -11,27 +11,32 @@ const SideBar = ({ links }: { links: Array<AppLink>, title?: string }) => {
             const reactKey = `home-link-${i}`;
 
             return (
-              <Link 
+              <NavLink 
                 to={to}
                 key={reactKey} 
-                className='
+                className={({ isActive }) => `
                   text-sm
-                  bg-white hover:bg-blue-700
-                  text-black hover:text-white
+                  ${isActive ? 'bg-blue-700': 'bg-white'} hover:bg-blue-700
+                  ${isActive ? 'text-white': 'text-black'} hover:text-white
                   flex justify-start items-center text-center
                   font-light hover:font-extrabold 
                   p-4 text-nowrap
-                '
+                `}
               >
-                <Icon 
-                  className='
-                      text-lg child group-hover:text-4xl
-                      transition ease-in-out duration-500
-                      mr-2
-                    '
-                />
+                {
+                  Icon &&
+                  (
+                    <Icon 
+                      className='
+                        text-lg child group-hover:text-4xl
+                        transition ease-in-out duration-500
+                        mr-2
+                      '
+                    />
+                  )
+                }
                 <span>{label}</span>
-              </Link>
+              </NavLink>
             );
           })
         }

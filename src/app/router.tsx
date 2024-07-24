@@ -9,6 +9,9 @@ import Billing from 'src/app/modules/billing';
 import Caps from 'src/app/modules/caps';
 import Data from 'src/app/modules/data';
 import Reports from 'src/app/modules/reports';
+import ReportsDashboard from 'src/app/modules/reports/dashboard';
+import NewReport from 'src/app/modules/reports/new';
+
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
@@ -17,7 +20,10 @@ const appRouter = createBrowserRouter(
       <Route path="login" element={<LoginPage />} />
       <Route path="reset-password" element={<ResetPassword />} />
       <Route path="request-password-reset" element={<ForgotPassword />} />
-      <Route path="reports" element={<Reports />} />
+      <Route path="reports" element={<Reports />}>
+        <Route path="" element={<ReportsDashboard />} />
+        <Route path="new" element={<NewReport />} />
+      </Route>
       <Route path="caps" element={<Caps />} />
       <Route path="data" element={<Data />} />
       <Route path="billing" element={<Billing />} />

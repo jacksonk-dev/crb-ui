@@ -14,7 +14,7 @@ export type User = {
   password_expiry_date?: string;
   last_login_date?: string;
   roles?: Array<UserRole>;
-  reports?: Array<PartnerReport>;
+  user_reports?: Array<PartnerReport>;
   partner?: Partner;
   partner_branch?: PartnerBranch;
   user_type?: number;
